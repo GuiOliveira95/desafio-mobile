@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvProduct"
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+            <ImageView
+                    android:id="@+id/image"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="center"
+            />
+
+            <TextView
+                    android:id="@+id/txtProductTitle"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Título do produto"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+            />
+
+            <TextView
+                    android:id="@+id/txtPrecoTabela"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R$ 9.999,99"
+                    android:layout_gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/darker_gray"
+            />
+
+            <TextView
+                    android:id="@+id/txtPrecoFinal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R$ 9.999,99"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/holo_green_dark"
+            />
+
+            <TextView
+                    android:id="@+id/txtPrecoParcelado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10x de R$ 999,99"
+                    android:layout_gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/holo_green_dark"
+            />
+
+            <TextView
+                    android:id="@+id/txtTotalDesconto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Desconto: R$ 1.000,00"
+                    android:layout_gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/holo_green_dark"
+            />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
