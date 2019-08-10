@@ -101,7 +101,7 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
             val textParcela: String
             if (seller.bestInstallment != null && seller.bestInstallment!!.value != null) {
                 textParcela =
-                    seller.bestInstallment!!.count.toString() + "x de R$ " + seller.bestInstallment!!.value.toString()
+                    seller.bestInstallment!!.count.toString() + "x de " + Utils.getPriceFormated(seller.bestInstallment!!.value!!)
                 txtPrecoParcelado.text = textParcela
             }
 

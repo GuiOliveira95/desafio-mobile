@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
 import com.guioliveiraapps.fulllab.model.Product
+import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.ProductViewModel
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -79,9 +81,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         productViewModel?.mResponse?.observe(this, Observer {
             if (it != null && it.products!!.isNotEmpty()) {
                 setupList(it.products!!)
+            } else {
+                showNoMoreProducts()
             }
             canSearch = true
         })
+    }
+
+    private fun showNoMoreProducts() {
+        progressSearch.visibility = View.GONE
+        Utils.fadeIn(txtNoMoreProducts, 200)
     }
 
     private fun setupList(products: List<Product>) {

@@ -20,4 +20,5 @@
     <string name="search">Search</string>
     <string name="categorias">Categorias</string>
     <string name="t_tulo_da_categoria">Título da Categoria</string>
+    <string name="n_o_existem_mais_produtos">Não existem mais produtos.</string>
 </resources>
