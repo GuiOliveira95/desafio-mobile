@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
-import com.guioliveiraapps.fulllab.model.SubCategory
+import com.guioliveiraapps.fulllab.model.category.SubCategory
 
 class SubCategoryAdapter(private val list: ArrayList<SubCategory>, private val context: Context) :
     RecyclerView.Adapter<SubCategoryAdapter.SubCategoryAdapterViewHolder>() {

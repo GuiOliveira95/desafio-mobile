@@ -1,4 +1,4 @@
-package com.guioliveiraapps.fulllab.model
+package com.guioliveiraapps.fulllab.model.product
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

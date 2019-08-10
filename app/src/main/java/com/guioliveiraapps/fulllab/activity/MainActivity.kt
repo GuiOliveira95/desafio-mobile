@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
-import com.guioliveiraapps.fulllab.model.Product
+import com.guioliveiraapps.fulllab.model.product.Product
 import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.ProductViewModel
 import kotlinx.android.synthetic.main.content_main.*
@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private var canSearch = true
 
+    private var drawerLayout: DrawerLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,14 +48,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         rvProducts = findViewById(R.id.rvProducts)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+
+
+       drawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-        drawerLayout.addDrawerListener(toggle)
+        drawerLayout!!.addDrawerListener(toggle)
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
@@ -109,9 +113,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
+        if (drawerLayout!!.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout!!.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
@@ -141,16 +144,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
+                drawerLayout!!.closeDrawer(GravityCompat.START)
             }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_tools -> {
-
+            R.id.nav_category -> {
+                startActivity(Intent(this, CategoryActivity::class.java))
             }
             R.id.nav_share -> {
 

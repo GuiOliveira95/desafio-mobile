@@ -3,16 +3,19 @@ package com.guioliveiraapps.fulllab.activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.MenuItem
-import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.ScrollView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
-import com.guioliveiraapps.fulllab.model.Product
+import com.guioliveiraapps.fulllab.model.product.Product
 import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.ProductViewModel
 import kotlinx.android.synthetic.main.activity_search.*
@@ -42,6 +45,8 @@ class SearchActivity : AppCompatActivity() {
 
         setupListeners()
         setupViewmodel()
+
+        editSearch.requestFocus()
     }
 
     private fun setupViewmodel() {
@@ -146,6 +151,22 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {}
+        })
+
+        editSearch!!.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean {
+                if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                    if (editSearch!!.length() > 2) {
+                        offset = 0
+                        Utils.fadeIn(progressBarHorizontal, 200)
+                        productViewModel?.getProducts(editSearch.text.toString(), offset.toString(), 10.toString())
+                    } else {
+                        Toast.makeText(applicationContext, R.string.digite_mais_de_dois_caracteres_para_fazer_a_busca, Toast.LENGTH_SHORT).show()
+                        return true
+                    }
+                }
+                return false
+            }
         })
 
         nsProducts.isNestedScrollingEnabled = false

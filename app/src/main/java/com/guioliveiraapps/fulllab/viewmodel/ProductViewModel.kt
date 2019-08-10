@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.guioliveiraapps.fulllab.model.ProductQuery
-import com.guioliveiraapps.fulllab.model.ResponseProducts
+import com.guioliveiraapps.fulllab.response.ResponseProducts
 import com.guioliveiraapps.fulllab.service.HttpClient
 
 class ProductViewModel(application: Application) : AndroidViewModel(application) {

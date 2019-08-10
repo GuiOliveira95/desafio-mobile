@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.CategoryAdapter
-import com.guioliveiraapps.fulllab.model.Category
+import com.guioliveiraapps.fulllab.model.category.Category
 import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.CategoryViewModel
 import kotlinx.android.synthetic.main.content_category.*

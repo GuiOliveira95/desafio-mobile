@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.SubCategoryAdapter
-import com.guioliveiraapps.fulllab.model.SubCategory
+import com.guioliveiraapps.fulllab.model.category.SubCategory
 import com.guioliveiraapps.fulllab.model.SubCategoryList
 import java.util.*
 

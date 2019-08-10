@@ -1,8 +1,8 @@
 package com.guioliveiraapps.fulllab.service
 
 import com.guioliveiraapps.fulllab.model.ProductQuery
-import com.guioliveiraapps.fulllab.model.ResponseCategory
-import com.guioliveiraapps.fulllab.model.ResponseProducts
+import com.guioliveiraapps.fulllab.response.ResponseCategory
+import com.guioliveiraapps.fulllab.response.ResponseProducts
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

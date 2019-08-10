@@ -11,8 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.activity.SubCategoryActivity
-import com.guioliveiraapps.fulllab.model.Category
-import com.guioliveiraapps.fulllab.model.SubCategory
+import com.guioliveiraapps.fulllab.model.category.Category
+import com.guioliveiraapps.fulllab.model.category.SubCategory
 import com.guioliveiraapps.fulllab.model.SubCategoryList
 
 class CategoryAdapter(private val list: ArrayList<Category>, private val context: Context) :

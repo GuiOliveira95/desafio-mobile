@@ -1,6 +1,7 @@
-package com.guioliveiraapps.fulllab.model
+package com.guioliveiraapps.fulllab.response
 
 import com.google.gson.annotations.SerializedName
+import com.guioliveiraapps.fulllab.model.product.Product
 import java.io.Serializable
 
 class ResponseProducts : Serializable {

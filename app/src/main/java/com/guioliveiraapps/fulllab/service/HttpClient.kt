@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.guioliveiraapps.fulllab.model.ProductQuery
-import com.guioliveiraapps.fulllab.model.ResponseCategory
-import com.guioliveiraapps.fulllab.model.ResponseProducts
+import com.guioliveiraapps.fulllab.response.ResponseCategory
+import com.guioliveiraapps.fulllab.response.ResponseProducts
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
