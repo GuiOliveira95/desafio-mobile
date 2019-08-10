@@ -21,4 +21,8 @@
     <string name="categorias">Categorias</string>
     <string name="t_tulo_da_categoria">Título da Categoria</string>
     <string name="n_o_existem_mais_produtos">Não existem mais produtos.</string>
+    <string name="r_9_999_99">R$ 9.999,99</string>
+    <string name="_10x_de_r_999_99">10x de R$ 999,99</string>
+    <string name="economize_r_1_000_00">Economize: R$ 1.000,00</string>
+    <string name="t_tulo_do_produto">Título do produto</string>
 </resources>

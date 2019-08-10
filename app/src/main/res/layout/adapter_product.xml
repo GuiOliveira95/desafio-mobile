@@ -3,7 +3,7 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
         android:background="@android:color/darker_gray"
         android:padding="8dp">
 
@@ -20,13 +20,12 @@
                 android:padding="8dp">
 
             <ImageView
-                    android:src="@drawable/product_placeholder"
                     android:id="@+id/image"
+                    android:src="@drawable/product_placeholder"
                     android:padding="16dp"
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal"
-                    android:scaleType="fitCenter"
             />
 
             <TextView
@@ -34,7 +33,7 @@
                     android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Título do produto"
+                    android:text="@string/t_tulo_do_produto"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:maxLines="2"
@@ -48,21 +47,20 @@
                     android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R$ 9.999,99"
+                    android:text="@string/r_9_999_99"
                     android:layout_gravity="center"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/darker_gray"
             />
 
             <TextView
                     android:id="@+id/txtPrecoFinal"
-                    android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R$ 9.999,99"
+                    android:text="@string/r_9_999_99"
                     android:layout_gravity="center"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textColor="@android:color/holo_green_dark"
             />
 
@@ -70,9 +68,9 @@
                     android:id="@+id/txtPrecoParcelado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10x de R$ 999,99"
+                    android:text="@string/_10x_de_r_999_99"
                     android:layout_gravity="center"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/holo_green_dark"
             />
 
@@ -80,9 +78,9 @@
                     android:id="@+id/txtTotalDesconto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Desconto: R$ 1.000,00"
+                    android:text="@string/economize_r_1_000_00"
                     android:layout_gravity="center"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/holo_green_dark"
             />
 
