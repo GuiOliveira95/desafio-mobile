@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nsProducts.isNestedScrollingEnabled = false
         nsProducts.viewTreeObserver.addOnScrollChangedListener {
             if (nsProducts.scrollY == nsProducts.getChildAt(0).measuredHeight - nsProducts.measuredHeight) {
-//                Toast.makeText(applicationContext, "end", Toast.LENGTH_SHORT).show()
                 if (canSearch) {
                     offset += 10
                     productViewModel?.getProducts("", offset.toString(), 10.toString())

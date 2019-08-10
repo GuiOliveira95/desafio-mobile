@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
@@ -26,6 +28,10 @@ class SearchActivity : AppCompatActivity() {
 
     var adapter: ProductAdapter? = null
 
+    var offset = 0
+
+    var canSearch = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -47,33 +53,32 @@ class SearchActivity : AppCompatActivity() {
             if (it != null && it.products!!.isNotEmpty()) {
                 setupList(it.products!!)
             } else {
-                showNoProductsFound()
+                if (offset == 0) {
+                    showNotFoundProducts()
+                } else {
+                    showNoMoreProducts()
+                }
             }
-            hideHorizontalLoading()
+            Utils.fadeOut(progressBarHorizontal, 200, 1)
         })
     }
 
-    private fun showRecycler() {
-        Utils.fadeIn(rvSearchResults, 200)
+    private fun showNoMoreProducts() {
+        Utils.fadeIn(txtNoMoreProducts, 200)
+        Utils.fadeOut(txtNoProductsFound, 200, 2)
+        Utils.fadeOut(progressSearch, 200, 2)
+        Utils.fadeOut(progressBarHorizontal, 200, 1)
+        Utils.fadeOut(txtProcurar, 200, 2)
+        canSearch = false
     }
 
-    private fun hideRecycler() {
-        Utils.fadeOut(rvSearchResults, 200, 1)
-    }
-
-    private fun showNoProductsFound() {
-        hideRecycler()
-        if (adapter != null) adapter!!.clear()
-        showNoProductsTxt()
-        hideTxtProcurar()
-    }
-
-    private fun showNoProductsTxt() {
+    private fun showNotFoundProducts() {
         Utils.fadeIn(txtNoProductsFound, 200)
-    }
-
-    private fun hideNoProductsTxt() {
-        Utils.fadeOut(txtNoProductsFound, 1, 1)
+        Utils.fadeOut(progressBarHorizontal, 200, 1)
+        Utils.fadeOut(nsProducts, 200, 2)
+        Utils.fadeOut(txtNoMoreProducts, 200, 2)
+        Utils.fadeOut(txtProcurar, 200, 2)
+        Utils.fadeOut(progressSearch, 200, 2)
     }
 
     private fun setupList(products: List<Product>) {
@@ -83,14 +88,19 @@ class SearchActivity : AppCompatActivity() {
             rvSearchResults!!.setHasFixedSize(true)
             rvSearchResults!!.isNestedScrollingEnabled = false
             rvSearchResults!!.adapter = adapter
-            hideTxtProcurar()
+        } else if (offset > 0) {
+            adapter!!.addProducts(products)
         } else {
             adapter!!.replaceProducts(products)
+            nsProducts.fullScroll(ScrollView.FOCUS_UP)
         }
 
-        showRecycler()
-        hideNoProductsTxt()
-        hideHorizontalLoading()
+        Utils.fadeIn(nsProducts, 200)
+        Utils.fadeOut(txtNoProductsFound, 200, 2)
+        Utils.fadeOut(progressBarHorizontal, 200, 1)
+        Utils.fadeOut(txtNoMoreProducts, 200, 2)
+        Utils.fadeOut(progressSearch, 200, 2)
+        Utils.fadeOut(txtProcurar, 200, 2)
     }
 
     private fun setupToolbar() {
@@ -121,6 +131,8 @@ class SearchActivity : AppCompatActivity() {
                     override fun run() {
                         runOnUiThread {
                             if (count > 0) {
+                                offset = 0
+                                canSearch = true
                                 if (editSearch.text.length > 2) {
                                     productViewModel!!.getProducts(editSearch.text.toString(), "0", "10")
                                     showHorizontalLoading()
@@ -131,25 +143,26 @@ class SearchActivity : AppCompatActivity() {
                         }
                     }
                 }, 500)
-
             }
 
-            override fun afterTextChanged(s: Editable?) {
-
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
+
+        nsProducts.isNestedScrollingEnabled = false
+        nsProducts.isSmoothScrollingEnabled = true
+        nsProducts.viewTreeObserver.addOnScrollChangedListener {
+            if (nsProducts.scrollY == nsProducts.getChildAt(0).measuredHeight - nsProducts.measuredHeight) {
+                if (canSearch) {
+                    offset += 10
+                    productViewModel?.getProducts(editSearch.text.toString(), offset.toString(), 10.toString())
+                    Utils.fadeIn(progressSearch, 200)
+                }
+            }
+        }
     }
 
     fun showHorizontalLoading() {
         Utils.fadeIn(progressBarHorizontal, 200)
-    }
-
-    fun hideHorizontalLoading() {
-        Utils.fadeOut(progressBarHorizontal, 200, 1)
-    }
-
-    fun hideTxtProcurar() {
-        Utils.fadeOut(txtProcurar, 200, 1)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
