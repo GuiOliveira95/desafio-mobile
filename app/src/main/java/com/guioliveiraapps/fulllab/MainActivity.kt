@@ -19,7 +19,6 @@ import com.guioliveiraapps.fulllab.model.Product
 import com.guioliveiraapps.fulllab.viewmodel.ProductViewModel
 import kotlinx.android.synthetic.main.content_main.*
 
-
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var productViewModel: ProductViewModel? = null
@@ -29,6 +28,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var rvProducts: RecyclerView? = null
 
     private var offset = 0
+
+    private var canSearch = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +62,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nsProducts.viewTreeObserver.addOnScrollChangedListener {
             if (nsProducts.scrollY == nsProducts.getChildAt(0).measuredHeight - nsProducts.measuredHeight) {
 //                Toast.makeText(applicationContext, "end", Toast.LENGTH_SHORT).show()
-                offset += 10
-                productViewModel?.getProducts("", offset.toString(), 10.toString())
+                if (canSearch) {
+                    offset += 10
+                    productViewModel?.getProducts("", offset.toString(), 10.toString())
+                    canSearch = false
+                }
             }
         }
     }
@@ -73,9 +77,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         productViewModel?.mResponse?.observe(this, Observer {
-            if (it != null && !it.products!!.isEmpty()) {
+            if (it != null && it.products!!.isNotEmpty()) {
                 setupList(it.products!!)
             }
+            canSearch = true
         })
     }
 

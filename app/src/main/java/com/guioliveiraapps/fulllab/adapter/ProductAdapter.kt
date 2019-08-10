@@ -106,7 +106,8 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
             }
 
             if (seller.offer != null && seller.offer!! > 0) {
-                txtTotalDesconto.text = "Economize " + seller.offer.toString()
+                val offer =  "Economize " + Utils.getPriceFormated(seller.offer!!)
+                txtTotalDesconto.text = offer
             } else {
                 txtTotalDesconto.visibility = View.INVISIBLE
             }
