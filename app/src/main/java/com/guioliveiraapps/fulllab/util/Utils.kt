@@ -8,6 +8,8 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.request.RequestOptions
+import java.text.NumberFormat
+import java.util.*
 
 class Utils {
 
@@ -25,6 +27,11 @@ class Utils {
                 .load(imgUrl)
                 .apply(requestOptions)
                 .into(mImage)
+        }
+
+        fun getPriceFormated(price: Double): String {
+            val ptBr = Locale("pt", "BR")
+            return NumberFormat.getCurrencyInstance(ptBr).format(price)
         }
 
         fun fadeIn(v: View, duration: Long) {

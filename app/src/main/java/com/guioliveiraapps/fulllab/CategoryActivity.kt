@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.adapter.CategoryAdapter
 import com.guioliveiraapps.fulllab.model.Category
+import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.CategoryViewModel
+import kotlinx.android.synthetic.main.content_category.*
 import java.util.*
 
 class CategoryActivity : AppCompatActivity() {
@@ -55,6 +57,9 @@ class CategoryActivity : AppCompatActivity() {
             rvCategories!!.isNestedScrollingEnabled = false
             rvCategories!!.adapter = adapter
         }
+
+        Utils.fadeIn(rvCategories!!, 200)
+        Utils.fadeOut(progressSearch, 1, 2)
     }
 
     private fun setupToolbar() {

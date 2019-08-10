@@ -35,7 +35,17 @@
                     android:id="@+id/rvCategories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipToPadding="false"/>
+                    android:clipToPadding="false"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressSearch"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:visibility="visible"/>
 
         </LinearLayout>
 
