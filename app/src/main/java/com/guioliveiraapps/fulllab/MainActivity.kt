@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -23,30 +22,23 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    var productViewModel: ProductViewModel? = null
+    private var productViewModel: ProductViewModel? = null
 
-    var adapter: ProductAdapter? = null
+    private var adapter: ProductAdapter? = null
 
-    var rvProducts: RecyclerView? = null
+    private var rvProducts: RecyclerView? = null
 
-    var offset = 0
-
-    var canSearch = true
+    private var offset = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val toolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
 
         setupViewmodel()
         setupNestedScrollListener()
-
-//        val fab: FloatingActionButton = findViewById(R.id.fab)
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
 
         rvProducts = findViewById(R.id.rvProducts)
 
@@ -117,8 +109,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.main_action_search -> {
-                Toast.makeText(applicationContext, "SEARCH", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, SearchActivity::class.java))
+                true
+            }
+            R.id.main_action_categorias -> {
+                startActivity(Intent(this, CategoryActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

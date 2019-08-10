@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
 import com.guioliveiraapps.fulllab.model.Product
 import com.guioliveiraapps.fulllab.util.Utils
@@ -35,9 +34,7 @@ class SearchActivity : AppCompatActivity() {
         setupToolbar()
 
         setupListeners()
-
         setupViewmodel()
-
     }
 
     private fun setupViewmodel() {
@@ -46,10 +43,36 @@ class SearchActivity : AppCompatActivity() {
         }
 
         productViewModel?.mResponse?.observe(this, androidx.lifecycle.Observer {
-            if (it != null && !it.products!!.isEmpty()) {
+            if (it != null && it.products!!.isNotEmpty()) {
                 setupList(it.products!!)
+            } else {
+                showNoProductsFound()
             }
+            hideHorizontalLoading()
         })
+    }
+
+    private fun showRecycler() {
+        Utils.fadeIn(rvSearchResults, 200)
+    }
+
+    private fun hideRecycler() {
+        Utils.fadeOut(rvSearchResults, 200, 1)
+    }
+
+    private fun showNoProductsFound() {
+        hideRecycler()
+        if (adapter != null) adapter!!.clear()
+        showNoProductsTxt()
+        hideTxtProcurar()
+    }
+
+    private fun showNoProductsTxt() {
+        Utils.fadeIn(txtNoProductsFound, 200)
+    }
+
+    private fun hideNoProductsTxt() {
+        Utils.fadeOut(txtNoProductsFound, 1, 1)
     }
 
     private fun setupList(products: List<Product>) {
@@ -59,9 +82,14 @@ class SearchActivity : AppCompatActivity() {
             rvSearchResults!!.setHasFixedSize(true)
             rvSearchResults!!.isNestedScrollingEnabled = false
             rvSearchResults!!.adapter = adapter
+            hideTxtProcurar()
         } else {
             adapter!!.replaceProducts(products)
         }
+
+        showRecycler()
+        hideNoProductsTxt()
+        hideHorizontalLoading()
     }
 
     private fun setupToolbar() {
@@ -94,6 +122,7 @@ class SearchActivity : AppCompatActivity() {
                             if (count > 0) {
                                 if (editSearch.text.length > 2) {
                                     productViewModel!!.getProducts(editSearch.text.toString(), "0", "10")
+                                    showHorizontalLoading()
                                 }
                             } else {
 
@@ -110,6 +139,17 @@ class SearchActivity : AppCompatActivity() {
         })
     }
 
+    fun showHorizontalLoading() {
+        Utils.fadeIn(progressBarHorizontal, 200)
+    }
+
+    fun hideHorizontalLoading() {
+        Utils.fadeOut(progressBarHorizontal, 200, 1)
+    }
+
+    fun hideTxtProcurar() {
+        Utils.fadeOut(txtProcurar, 200, 1)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

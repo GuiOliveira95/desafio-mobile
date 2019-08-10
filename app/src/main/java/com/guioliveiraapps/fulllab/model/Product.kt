@@ -23,7 +23,7 @@ class Product : Serializable {
     @SerializedName("Description")
     var description: String? = null
 
-    @SerializedName("Category")
+    @SerializedName("SubCategory")
     var category: String? = null
 
     @SerializedName("Categories")

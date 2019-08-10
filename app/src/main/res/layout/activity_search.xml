@@ -9,6 +9,7 @@
         tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
@@ -53,14 +54,57 @@
                         android:visibility="invisible"
                 />
 
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_search"/>
+    <include
+            android:id="@+id/includeSearch"
+            app:layout_constraintTop_toBottomOf="@id/progressBarHorizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            layout="@layout/content_search"/>
+
+    <ProgressBar
+            android:id="@+id/progressBarHorizontal"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@android:color/holo_blue_dark"
+            android:background="@android:color/transparent"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+    <TextView
+            android:id="@+id/txtProcurar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/digite_o_nome_do_produto_que_deseja_encontrar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textAlignment="center"
+    />
+
+    <TextView
+            android:id="@+id/txtNoProductsFound"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/n_o_foi_poss_vel_encontrar_produtos"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:visibility="invisible"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

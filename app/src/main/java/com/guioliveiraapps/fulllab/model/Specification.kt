@@ -11,7 +11,7 @@ class Specification : Serializable {
     @SerializedName("Outros Detalhes")
     var outrosDetalhes: Array<String>? = null
 
-    @SerializedName("Category")
+    @SerializedName("SubCategory")
     var category: String? = null
 
     @SerializedName("Marca")

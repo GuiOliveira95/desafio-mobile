@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.guioliveiraapps.fulllab.model.ProductQuery
+import com.guioliveiraapps.fulllab.model.ResponseCategory
 import com.guioliveiraapps.fulllab.model.ResponseProducts
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -79,5 +80,23 @@ class HttpClient {
 //                    mApiResponse.postValue(res)
                 }
             })
+    }
+
+    fun getCategories(mApiResponse: MutableLiveData<ResponseCategory>) {
+        repository.getCategories().enqueue(object : Callback<ResponseCategory> {
+            override fun onResponse(call: Call<ResponseCategory>?, response: Response<ResponseCategory>?) {
+                if (response!!.isSuccessful) {
+                    val res = ResponseCategory()
+                    res.categories = response.body()!!.categories
+                    mApiResponse.postValue(res)
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseCategory>, t: Throwable) {
+//                    val res = ResponseProducts()
+//                    res.error = true
+//                    mApiResponse.postValue(res)
+            }
+        })
     }
 }

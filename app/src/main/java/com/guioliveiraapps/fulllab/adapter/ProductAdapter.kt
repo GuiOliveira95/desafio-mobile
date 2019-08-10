@@ -71,6 +71,11 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
         notifyDataSetChanged()
     }
 
+    fun clear() {
+        list.clear()
+        notifyDataSetChanged()
+    }
+
     class ProductAdapterViewHolder(val containerView: View?) : RecyclerView.ViewHolder(containerView!!) {
         val ivImage = containerView!!.findViewById(R.id.image) as ImageView
         val txtTitle = containerView!!.findViewById(R.id.txtProductTitle) as TextView
@@ -95,9 +100,11 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
             txtPrecoFinal.text = seller.price.toString()
 
             val textParcela: String
-            textParcela =
-                seller.bestInstallment!!.count.toString() + "x de R$ " + seller.bestInstallment!!.value.toString()
-            txtPrecoParcelado.text = textParcela
+            if (seller.bestInstallment != null && seller.bestInstallment!!.value != null) {
+                textParcela =
+                    seller.bestInstallment!!.count.toString() + "x de R$ " + seller.bestInstallment!!.value.toString()
+                txtPrecoParcelado.text = textParcela
+            }
 
             if (seller.offer != null && seller.offer!! > 0) {
                 txtTotalDesconto.text = seller.offer.toString()
