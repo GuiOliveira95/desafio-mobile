@@ -37,7 +37,6 @@ class CategoryAdapter(private val list: ArrayList<Category>, private val context
         subCategoryList.subcategories = holder.subCategories
 
         holder.containerView!!.setOnClickListener {
-            Toast.makeText(context, holder.title, Toast.LENGTH_SHORT).show()
             try {
                 val b = Bundle()
                 val intent = Intent(context as Activity, SubCategoryActivity::class.java)

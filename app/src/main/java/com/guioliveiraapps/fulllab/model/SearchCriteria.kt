@@ -12,7 +12,7 @@ class SearchCriteria : Serializable {
     var orderBy: Int? = null
 
     @SerializedName("Size")
-    var size: String? = null
+    var size: Int? = null
 
     @SerializedName("Offset")
     var offset: String? = null

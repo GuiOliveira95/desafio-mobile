@@ -17,7 +17,7 @@ class SubCategory : Serializable {
     @SerializedName("Redirect")
     var redirect: Redirect? = null
 
-    @SerializedName("Subcategories")
+    @SerializedName("SubCategories")
     var subCategories: List<SubCategory>? = null
 
     @SerializedName("Highlight")
