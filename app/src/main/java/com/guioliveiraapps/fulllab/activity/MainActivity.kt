@@ -1,4 +1,4 @@
-package com.guioliveiraapps.fulllab
+package com.guioliveiraapps.fulllab.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
 import com.guioliveiraapps.fulllab.model.Product
 import com.guioliveiraapps.fulllab.util.Utils
@@ -48,7 +49,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -91,6 +94,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun showNoMoreProducts() {
         progressSearch.visibility = View.GONE
         Utils.fadeIn(txtNoMoreProducts, 200)
+        canSearch = false
     }
 
     private fun setupList(products: List<Product>) {

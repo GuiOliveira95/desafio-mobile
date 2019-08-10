@@ -1,4 +1,4 @@
-package com.guioliveiraapps.fulllab
+package com.guioliveiraapps.fulllab.activity
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.ProductAdapter
 import com.guioliveiraapps.fulllab.model.Product
 import com.guioliveiraapps.fulllab.util.Utils

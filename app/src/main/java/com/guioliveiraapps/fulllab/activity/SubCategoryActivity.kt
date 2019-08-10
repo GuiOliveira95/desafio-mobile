@@ -1,4 +1,4 @@
-package com.guioliveiraapps.fulllab
+package com.guioliveiraapps.fulllab.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.guioliveiraapps.fulllab.adapter.CategoryAdapter
+import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.SubCategoryAdapter
-import com.guioliveiraapps.fulllab.model.Category
 import com.guioliveiraapps.fulllab.model.SubCategory
 import com.guioliveiraapps.fulllab.model.SubCategoryList
 import java.util.*

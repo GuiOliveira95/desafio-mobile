@@ -15,7 +15,8 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="text">TEXT</string>
-    <string name="digite_o_nome_do_produto_que_deseja_encontrar">Digite o nome do produto que deseja encontrar...</string>
+    <string name="digite_o_nome_do_produto_que_deseja_encontrar">Digite o nome do produto que deseja encontrar...
+    </string>
     <string name="n_o_foi_poss_vel_encontrar_produtos">Não foi possível encontrar produtos.</string>
     <string name="search">Search</string>
     <string name="categorias">Categorias</string>

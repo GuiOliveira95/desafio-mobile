@@ -35,9 +35,12 @@
 
         <TextView
                 android:id="@+id/txtNoMoreProducts"
-                android:layout_width="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:textAlignment="center"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_marginTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="@string/n_o_existem_mais_produtos"
