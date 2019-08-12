@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
 import java.util.*
 
-
 class SearchActivity : AppCompatActivity() {
 
     private var timer: Timer? = null
@@ -161,7 +160,11 @@ class SearchActivity : AppCompatActivity() {
                         Utils.fadeIn(progressBarHorizontal, 200)
                         productViewModel?.getProducts(editSearch.text.toString(), offset.toString(), 10.toString())
                     } else {
-                        Toast.makeText(applicationContext, R.string.digite_mais_de_dois_caracteres_para_fazer_a_busca, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            applicationContext,
+                            R.string.digite_mais_de_dois_caracteres_para_fazer_a_busca,
+                            Toast.LENGTH_SHORT
+                        ).show()
                         return true
                     }
                 }

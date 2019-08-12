@@ -32,7 +32,7 @@ class SubCategoryAdapter(private val list: ArrayList<SubCategory>, private val c
     }
 
     class SubCategoryAdapterViewHolder(val containerView: View?) : RecyclerView.ViewHolder(containerView!!) {
-        val txtTitle = containerView!!.findViewById(R.id.txtCategoryTitle) as TextView
+        private val txtTitle = containerView!!.findViewById(R.id.txtCategoryTitle) as TextView
 
         var title: String? = ""
 

@@ -66,20 +66,20 @@ class HttpClient {
 
     fun getProducts(productQuery: ProductQuery, mApiResponse: MutableLiveData<ResponseProducts>) {
         repository.getProducts(productQuery).enqueue(object : Callback<ResponseProducts> {
-                override fun onResponse(call: Call<ResponseProducts>?, response: Response<ResponseProducts>?) {
-                    if (response!!.isSuccessful) {
-                        val res = ResponseProducts()
-                        res.products = response.body()!!.products
-                        mApiResponse.postValue(res)
-                    }
+            override fun onResponse(call: Call<ResponseProducts>?, response: Response<ResponseProducts>?) {
+                if (response!!.isSuccessful) {
+                    val res = ResponseProducts()
+                    res.products = response.body()!!.products
+                    mApiResponse.postValue(res)
                 }
+            }
 
-                override fun onFailure(call: Call<ResponseProducts>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseProducts>, t: Throwable) {
 //                    val res = ResponseProducts()
 //                    res.error = true
 //                    mApiResponse.postValue(res)
-                }
-            })
+            }
+        })
     }
 
     fun getCategories(mApiResponse: MutableLiveData<ResponseCategory>) {

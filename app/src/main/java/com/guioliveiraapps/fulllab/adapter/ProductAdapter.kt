@@ -1,6 +1,7 @@
 package com.guioliveiraapps.fulllab.adapter
 
 import android.content.Context
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,13 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.model.product.Product
 import com.guioliveiraapps.fulllab.model.product.Seller
 import com.guioliveiraapps.fulllab.model.product.Sku
 import com.guioliveiraapps.fulllab.util.Utils
-import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
-import com.guioliveiraapps.fulllab.R
-
 
 class ProductAdapter(private val list: ArrayList<Product>, private val context: Context) :
     RecyclerView.Adapter<ProductAdapter.ProductAdapterViewHolder>() {
@@ -22,7 +21,6 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_product, parent, false)
 
-//        view.layoutParams.width = view.measuredWidth / 2
         val parentWidth = parent.rootView.width
         val layoutParams = view.layoutParams
         layoutParams.width = parentWidth / 2
@@ -106,7 +104,7 @@ class ProductAdapter(private val list: ArrayList<Product>, private val context: 
             }
 
             if (seller.offer != null && seller.offer!! > 0) {
-                val offer =  "Economize " + Utils.getPriceFormated(seller.offer!!)
+                val offer = "Economize " + Utils.getPriceFormated(seller.offer!!)
                 txtTotalDesconto.text = offer
             } else {
                 txtTotalDesconto.visibility = View.INVISIBLE

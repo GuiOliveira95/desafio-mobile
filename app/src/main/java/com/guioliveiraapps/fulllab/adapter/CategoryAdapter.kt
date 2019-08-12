@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.activity.SubCategoryActivity
+import com.guioliveiraapps.fulllab.model.SubCategoryList
 import com.guioliveiraapps.fulllab.model.category.Category
 import com.guioliveiraapps.fulllab.model.category.SubCategory
-import com.guioliveiraapps.fulllab.model.SubCategoryList
 
 class CategoryAdapter(private val list: ArrayList<Category>, private val context: Context) :
     RecyclerView.Adapter<CategoryAdapter.CategoryAdapterViewHolder>() {
@@ -49,7 +49,7 @@ class CategoryAdapter(private val list: ArrayList<Category>, private val context
     }
 
     class CategoryAdapterViewHolder(val containerView: View?) : RecyclerView.ViewHolder(containerView!!) {
-        val txtTitle = containerView!!.findViewById(R.id.txtCategoryTitle) as TextView
+        private val txtTitle = containerView!!.findViewById(R.id.txtCategoryTitle) as TextView
 
         var title: String? = ""
         var subCategories: List<SubCategory>? = null
