@@ -18,7 +18,6 @@
     <string name="text">TEXT</string>
     <string name="digite_o_nome_do_produto_que_deseja_encontrar">Digite o nome do produto que deseja encontrar…</string>
     <string name="n_o_foi_poss_vel_encontrar_produtos">Não encontramos produtos com o nome pesquisa.</string>
-    <string name="search">Search</string>
     <string name="categorias">Categorias</string>
     <string name="t_tulo_da_categoria">Título da Categoria</string>
     <string name="n_o_existem_mais_produtos">Não existem mais produtos.</string>
@@ -29,4 +28,5 @@
 
     <string name="digite_mais_de_dois_caracteres_para_fazer_a_busca">Digite mais de 2 caracteres para fazer a busca.</string>
     <string name="communicate">Communicate</string>
+    <string name="search">search</string>
 </resources>

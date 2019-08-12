@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.SubCategoryAdapter
-import com.guioliveiraapps.fulllab.model.category.SubCategory
+import com.guioliveiraapps.fulllab.itemdecoration.SimpleDividerItemDecoration
 import com.guioliveiraapps.fulllab.model.SubCategoryList
+import com.guioliveiraapps.fulllab.model.category.SubCategory
 import java.util.*
 
 class SubCategoryActivity : AppCompatActivity() {
@@ -28,7 +29,8 @@ class SubCategoryActivity : AppCompatActivity() {
         try {
             title = intent.getStringExtra("name") as String
             subCategories = intent.getSerializableExtra("subCategoryList") as SubCategoryList
-        } catch (ignored: Exception) {}
+        } catch (ignored: Exception) {
+        }
 
         val toolbar: Toolbar = findViewById(R.id.sub_category_toolbar)
         setSupportActionBar(toolbar)
@@ -44,6 +46,7 @@ class SubCategoryActivity : AppCompatActivity() {
         if (adapter == null) {
             adapter = SubCategoryAdapter(categories as ArrayList<SubCategory>, this)
             rvSubCategories!!.layoutManager = LinearLayoutManager(this)
+            rvSubCategories!!.addItemDecoration(SimpleDividerItemDecoration(this))
             rvSubCategories!!.setHasFixedSize(true)
             rvSubCategories!!.isNestedScrollingEnabled = false
             rvSubCategories!!.adapter = adapter

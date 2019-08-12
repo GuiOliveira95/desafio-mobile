@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guioliveiraapps.fulllab.R
 import com.guioliveiraapps.fulllab.adapter.CategoryAdapter
+import com.guioliveiraapps.fulllab.itemdecoration.SimpleDividerItemDecoration
 import com.guioliveiraapps.fulllab.model.category.Category
 import com.guioliveiraapps.fulllab.util.Utils
 import com.guioliveiraapps.fulllab.viewmodel.CategoryViewModel
@@ -17,7 +18,7 @@ import java.util.*
 
 class CategoryActivity : AppCompatActivity() {
 
-    var categoryViewModel: CategoryViewModel? = null
+    private var categoryViewModel: CategoryViewModel? = null
 
     private var rvCategories: RecyclerView? = null
 
@@ -54,6 +55,7 @@ class CategoryActivity : AppCompatActivity() {
         if (adapter == null) {
             adapter = CategoryAdapter(categories as ArrayList<Category>, this)
             rvCategories!!.layoutManager = LinearLayoutManager(this)
+            rvCategories!!.addItemDecoration(SimpleDividerItemDecoration(this))
             rvCategories!!.setHasFixedSize(true)
             rvCategories!!.isNestedScrollingEnabled = false
             rvCategories!!.adapter = adapter

@@ -77,8 +77,7 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:indeterminateTint="@android:color/holo_blue_dark"
-            android:background="@android:color/transparent"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+            android:background="@android:color/transparent"/>
 
     <TextView
             android:id="@+id/txtProcurar"
